@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Day2Training/Day2Training.csproj" />
+  <Project Path="DBLayer/DBLayer.csproj" />
+</Solution>
