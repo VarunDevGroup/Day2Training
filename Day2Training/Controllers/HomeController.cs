@@ -28,6 +28,7 @@ namespace Day2Training.Controllers
         [HttpPost]
         public IActionResult Create(Product incomingData)
         {
+           
             Day2AppContext dbConext = new Day2AppContext();
             dbConext.Products.Add(incomingData);
             dbConext.SaveChanges();
@@ -39,6 +40,11 @@ namespace Day2Training.Controllers
         {
             Day2AppContext dbConext = new Day2AppContext();
             var product = dbConext.Products.Find(id);
+
+            ViewBag.Message = "Data Updated Successfully";
+
+
+
             return View(product);
         }
 
@@ -48,7 +54,12 @@ namespace Day2Training.Controllers
             Day2AppContext dbConext = new Day2AppContext();
             dbConext.Products.Update(incomingData);
             dbConext.SaveChanges();
-            return RedirectToAction("Index");
+           
+            TempData["message"]="Data Updated Successfully";
+
+            return RedirectToAction("Delete");
+
+            //return RedirectToAction("Delete?id=" + incomingData.Id);
         }
 
         //UPDATE

@@ -15,7 +15,13 @@ namespace DBLayer.Models
         public int Id { get; set; }
 
         [MaxLength(150)]
-        public string? Name { get; set; }
-        
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public string ProductInfo { get; set; }
+      
+
+
     }
 }

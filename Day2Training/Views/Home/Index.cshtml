@@ -9,6 +9,9 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<p>
+    @TempData["message"]
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -37,3 +40,4 @@
 }
     </tbody>
 </table>
+
