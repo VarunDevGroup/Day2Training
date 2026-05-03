@@ -9,6 +9,14 @@ namespace Day2Training
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+               builder.Services.AddAuthentication("Cookies")
+              .AddCookie("Cookies", options =>
+              {
+                  options.LoginPath = "/Account/Login";
+                  options.AccessDeniedPath = "/Account/AccessDenied";
+                  options.ExpireTimeSpan = TimeSpan.FromHours(8);
+              });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -22,7 +30,9 @@ namespace Day2Training
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.MapStaticAssets();
             app.MapControllerRoute(

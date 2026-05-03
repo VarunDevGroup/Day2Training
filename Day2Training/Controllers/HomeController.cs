@@ -3,6 +3,7 @@ using Day2Training.Models;
 using Microsoft.AspNetCore.Mvc;
 using DBLayer;
 using DBLayer.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Day2Training.Controllers
 {
@@ -10,8 +11,8 @@ namespace Day2Training.Controllers
     {
         public IActionResult Index()
         {
-            Day2AppContext dbConext = new Day2AppContext();
-            var products = dbConext.Products.ToList();
+         //   Day2AppContext dbConext = new Day2AppContext();
+            var products = new List<Product>();
 
             return View(products);
         }
@@ -20,6 +21,7 @@ namespace Day2Training.Controllers
         //READ
         //DELETE
 
+        [Authorize(Roles ="HR")]
         public IActionResult Create()
         {
             return View("CreateData");
